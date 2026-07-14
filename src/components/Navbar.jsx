@@ -35,8 +35,8 @@ const Navbar = () => {
             : 'max-w-7xl bg-transparent px-6 py-6 border border-transparent rounded-none'
         }`}
       >
-        <a href="#home" className="text-3xl font-display tracking-widest text-white">
-          FAKE<span className="text-gray-400">COPY</span>
+        <a href="#home" className="flex items-center">
+          <img src="/logo.png" alt="Fake Copy Logo" className="h-8 md:h-10 w-auto object-contain" />
         </a>
         
         <div className="hidden md:flex gap-8">
