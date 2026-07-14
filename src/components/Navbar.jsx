@@ -12,9 +12,12 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
+  const leftLinks = [
     { name: 'Home', href: '#home' },
     { name: 'Chi Sono', href: '#about' },
+  ];
+
+  const rightLinks = [
     { name: 'Progetti', href: '#projects' },
     { name: 'Contatti', href: '#contact' },
   ];
@@ -29,18 +32,33 @@ const Navbar = () => {
       }`}
     >
       <nav 
-        className={`w-full transition-all duration-500 flex justify-between items-center ${
+        className={`w-full transition-all duration-500 flex justify-center md:grid md:grid-cols-3 items-center ${
           scrolled 
-            ? 'max-w-3xl bg-[#0a0a0a]/90 backdrop-blur-md border border-white/10 rounded-full px-8 py-3 shadow-2xl' 
+            ? 'max-w-4xl bg-[#0a0a0a]/90 backdrop-blur-md border border-white/10 rounded-full px-8 py-3 shadow-2xl' 
             : 'max-w-7xl bg-transparent px-6 py-6 border border-transparent rounded-none'
         }`}
       >
-        <a href="#home" className="flex items-center">
+        {/* Left Links */}
+        <div className="hidden md:flex gap-8 justify-start items-center">
+          {leftLinks.map((link) => (
+            <a 
+              key={link.name} 
+              href={link.href}
+              className="text-sm font-medium text-gray-400 hover:text-white transition-colors"
+            >
+              {link.name}
+            </a>
+          ))}
+        </div>
+
+        {/* Center Logo */}
+        <a href="#home" className="flex items-center justify-center">
           <img src="/logo.png" alt="Fake Copy Logo" className="h-8 md:h-10 w-auto object-contain" />
         </a>
         
-        <div className="hidden md:flex gap-8">
-          {navLinks.map((link) => (
+        {/* Right Links */}
+        <div className="hidden md:flex gap-8 justify-end items-center">
+          {rightLinks.map((link) => (
             <a 
               key={link.name} 
               href={link.href}
