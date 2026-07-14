@@ -6,7 +6,7 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 function App() {
   return (
-    <div className="bg-[#0a0a0a] min-h-screen font-sans text-text-main selection:bg-gray-700 selection:text-white">
+    <div className="bg-[#0a0a0a] min-h-screen font-sans text-text-main selection:bg-gray-700 selection:text-white overflow-x-hidden">
       {/* Texture Noise & Vignette Background */}
       <div className="fixed inset-0 z-[-1] pointer-events-none">
         {/* Vignette (centro più chiaro, bordi neri) */}
