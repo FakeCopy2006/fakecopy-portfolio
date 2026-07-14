@@ -159,43 +159,47 @@ const Projects = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-lg p-4 md:p-8"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl p-0 md:p-8"
             onClick={closeGallery}
           >
+            {/* Pulsante di chiusura sempre visibile in alto a destra su mobile */}
+            <button 
+              onClick={closeGallery}
+              className="absolute top-4 right-4 md:-top-12 md:right-0 z-50 text-white hover:text-gray-300 transition-colors bg-white/20 backdrop-blur-md p-3 rounded-full shadow-lg"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
             <div 
-              className="relative w-full max-w-5xl max-h-[90vh] flex flex-col items-center justify-center"
+              className="relative w-full h-full md:h-auto max-w-5xl max-h-screen md:max-h-[90vh] flex flex-col items-center justify-center p-4"
               onClick={(e) => e.stopPropagation()}
             >
-              <button 
-                onClick={closeGallery}
-                className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors bg-white/10 p-2 rounded-full"
-              >
-                <X className="w-6 h-6" />
-              </button>
               
               {selectedProject.images.length > 1 && (
                 <>
-                  <button onClick={prevImage} className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 p-3 bg-black/50 text-white rounded-full hover:bg-white/20 transition backdrop-blur-md">
-                    <ChevronLeft className="w-6 h-6" />
+                  <button onClick={prevImage} className="absolute left-2 md:left-0 top-1/2 -translate-y-1/2 md:-translate-x-12 p-3 md:p-4 bg-black/60 text-white rounded-full hover:bg-white/20 transition backdrop-blur-md z-40">
+                    <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" />
                   </button>
-                  <button onClick={nextImage} className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 p-3 bg-black/50 text-white rounded-full hover:bg-white/20 transition backdrop-blur-md">
-                    <ChevronRight className="w-6 h-6" />
+                  <button onClick={nextImage} className="absolute right-2 md:right-0 top-1/2 -translate-y-1/2 md:translate-x-12 p-3 md:p-4 bg-black/60 text-white rounded-full hover:bg-white/20 transition backdrop-blur-md z-40">
+                    <ChevronRight className="w-6 h-6 md:w-8 md:h-8" />
                   </button>
                 </>
               )}
 
-              <img 
-                src={selectedProject.images[currentImageIndex]} 
-                alt={`${selectedProject.title} preview ${currentImageIndex + 1}`} 
-                className="max-w-full max-h-[75vh] object-contain rounded-xl shadow-2xl border border-white/10"
-              />
+              <div className="w-full flex-1 flex items-center justify-center max-h-[70vh] md:max-h-[75vh]">
+                <img 
+                  src={selectedProject.images[currentImageIndex]} 
+                  alt={`${selectedProject.title} preview ${currentImageIndex + 1}`} 
+                  className="max-w-full max-h-full object-contain rounded-xl shadow-2xl"
+                />
+              </div>
 
-              <div className="mt-6 flex flex-col md:flex-row items-center justify-between w-full gap-4">
-                <div className="flex gap-2">
+              <div className="mt-8 flex flex-col md:flex-row items-center justify-between w-full gap-6">
+                <div className="flex gap-3">
                   {selectedProject.images.map((_, i) => (
                     <div 
                       key={i} 
-                      className={`w-3 h-3 rounded-full transition-all ${i === currentImageIndex ? 'bg-white scale-125' : 'bg-white/30 cursor-pointer hover:bg-white/50'}`}
+                      className={`w-3 h-3 rounded-full transition-all ${i === currentImageIndex ? 'bg-white scale-125 shadow-[0_0_10px_rgba(255,255,255,0.8)]' : 'bg-white/30 cursor-pointer hover:bg-white/50'}`}
                       onClick={() => setCurrentImageIndex(i)}
                     ></div>
                   ))}
@@ -205,9 +209,9 @@ const Projects = () => {
                   href={selectedProject.appLink} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="px-6 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-colors flex items-center gap-2"
+                  className="px-8 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-colors flex items-center gap-2 shadow-lg"
                 >
-                  <ExternalLink className="w-4 h-4" /> Vedi Applicazione
+                  <ExternalLink className="w-5 h-5" /> Vedi Applicazione
                 </a>
               </div>
             </div>
