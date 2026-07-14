@@ -1,22 +1,29 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ExternalLink, Code } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ExternalLink, Code, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Projects = () => {
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
   const webProjects = [
     {
-      title: 'Cyber Dashboard',
+      title: 'Manuel Barber Shop',
       type: 'Web App & UX/UI',
-      img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800',
-      desc: 'Dashboard analitica con data visualization avanzata in stile dark theme.',
-      tech: ['React', 'Tailwind', 'Chart.js']
+      img: '/manuel-1.png',
+      images: ['/manuel-1.png', '/manuel-2.png', '/manuel-3.png', '/manuel-4.png'],
+      desc: 'Applicazione completa per la prenotazione online di appuntamenti dal barbiere, con interfaccia premium e intuitiva.',
+      tech: ['React', 'Tailwind', 'UX/UI Design'],
+      appLink: 'https://tuo-link-qui.com' // Da sostituire
     },
     {
       title: 'E-Commerce Premium',
       type: 'Web App & UX/UI',
       img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
+      images: ['https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800'],
       desc: 'Esperienza di shopping fluida con micro-interazioni e checkout ottimizzato.',
-      tech: ['Next.js', 'Framer Motion', 'Stripe']
+      tech: ['Next.js', 'Framer Motion', 'Stripe'],
+      appLink: '#'
     }
   ];
 
@@ -26,6 +33,27 @@ const Projects = () => {
     { title: 'Poster Design', img: 'https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=600' },
     { title: 'Packaging Concept', img: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&q=80&w=600' },
   ];
+
+  const openGallery = (project) => {
+    setSelectedProject(project);
+    setCurrentImageIndex(0);
+  };
+
+  const closeGallery = () => {
+    setSelectedProject(null);
+  };
+
+  const nextImage = () => {
+    if (selectedProject) {
+      setCurrentImageIndex((prev) => (prev + 1) % selectedProject.images.length);
+    }
+  };
+
+  const prevImage = () => {
+    if (selectedProject) {
+      setCurrentImageIndex((prev) => (prev - 1 + selectedProject.images.length) % selectedProject.images.length);
+    }
+  };
 
   return (
     <section id="projects" className="py-24 px-6 relative z-10">
@@ -56,23 +84,27 @@ const Projects = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.2 }}
-                className="glass-card group overflow-hidden"
+                className="glass-card group overflow-hidden cursor-pointer"
+                onClick={() => openGallery(project)}
               >
                 <div className="relative h-64 overflow-hidden">
                   <div className="absolute inset-0 bg-brand-purple/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
                   <img 
                     src={project.img} 
                     alt={project.title} 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 object-top"
                   />
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 bg-black/40 backdrop-blur-sm">
+                    <span className="text-white font-medium uppercase tracking-wider border border-white/50 px-6 py-2 rounded-full">Vedi Gallery</span>
+                  </div>
                 </div>
                 <div className="p-8">
-                  <div className="text-brand-purple text-sm font-semibold tracking-wider uppercase mb-2">{project.type}</div>
-                  <h4 className="text-2xl font-bold mb-3">{project.title}</h4>
+                  <div className="text-gray-400 text-sm font-semibold tracking-wider uppercase mb-2">{project.type}</div>
+                  <h4 className="text-2xl font-bold mb-3 text-white">{project.title}</h4>
                   <p className="text-text-muted mb-6">{project.desc}</p>
                   
                   <div className="flex items-center justify-between mt-auto">
-                    <div className="flex gap-2">
+                    <div className="flex flex-wrap gap-2">
                       {project.tech.map((t, i) => (
                         <span key={i} className="text-xs py-1 px-3 bg-white/5 border border-white/10 rounded-full text-text-muted">
                           {t}
@@ -80,12 +112,9 @@ const Projects = () => {
                       ))}
                     </div>
                     <div className="flex gap-3">
-                      <button className="p-2 bg-white/5 rounded-full hover:bg-white/10 hover:text-brand-blue transition-colors">
-                        <Code className="w-5 h-5" />
-                      </button>
-                      <button className="p-2 bg-white/5 rounded-full hover:bg-white/10 hover:text-brand-purple transition-colors">
+                      <a href={project.appLink} target="_blank" rel="noopener noreferrer" className="p-2 bg-white/5 rounded-full hover:bg-white/10 hover:text-brand-purple transition-colors border border-white/10" onClick={(e) => e.stopPropagation()}>
                         <ExternalLink className="w-5 h-5" />
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -113,7 +142,7 @@ const Projects = () => {
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                  <h4 className="text-xl font-semibold translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  <h4 className="text-xl font-semibold translate-y-4 group-hover:translate-y-0 transition-transform duration-300 text-white">
                     {project.title}
                   </h4>
                 </div>
@@ -122,6 +151,69 @@ const Projects = () => {
           </div>
         </div>
       </div>
+
+      {/* Modal Gallery */}
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-lg p-4 md:p-8"
+            onClick={closeGallery}
+          >
+            <div 
+              className="relative w-full max-w-5xl max-h-[90vh] flex flex-col items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button 
+                onClick={closeGallery}
+                className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors bg-white/10 p-2 rounded-full"
+              >
+                <X className="w-6 h-6" />
+              </button>
+              
+              {selectedProject.images.length > 1 && (
+                <>
+                  <button onClick={prevImage} className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 p-3 bg-black/50 text-white rounded-full hover:bg-white/20 transition backdrop-blur-md">
+                    <ChevronLeft className="w-6 h-6" />
+                  </button>
+                  <button onClick={nextImage} className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 p-3 bg-black/50 text-white rounded-full hover:bg-white/20 transition backdrop-blur-md">
+                    <ChevronRight className="w-6 h-6" />
+                  </button>
+                </>
+              )}
+
+              <img 
+                src={selectedProject.images[currentImageIndex]} 
+                alt={`${selectedProject.title} preview ${currentImageIndex + 1}`} 
+                className="max-w-full max-h-[75vh] object-contain rounded-xl shadow-2xl border border-white/10"
+              />
+
+              <div className="mt-6 flex flex-col md:flex-row items-center justify-between w-full gap-4">
+                <div className="flex gap-2">
+                  {selectedProject.images.map((_, i) => (
+                    <div 
+                      key={i} 
+                      className={`w-3 h-3 rounded-full transition-all ${i === currentImageIndex ? 'bg-white scale-125' : 'bg-white/30 cursor-pointer hover:bg-white/50'}`}
+                      onClick={() => setCurrentImageIndex(i)}
+                    ></div>
+                  ))}
+                </div>
+                
+                <a 
+                  href={selectedProject.appLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-colors flex items-center gap-2"
+                >
+                  <ExternalLink className="w-4 h-4" /> Vedi Applicazione
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
