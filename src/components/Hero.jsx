@@ -28,7 +28,7 @@ const Hero = () => {
         <img 
           src="/2026-bg.png" 
           alt="2026 Background" 
-          className="w-[110vw] min-w-[1200px] md:w-[90vw] max-w-none opacity-40 object-contain"
+          className="w-[150vw] sm:w-[120vw] md:w-[90vw] md:min-w-[1200px] max-w-none opacity-40 object-contain"
         />
       </div>
 
