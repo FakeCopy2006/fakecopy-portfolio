@@ -17,13 +17,13 @@ const Projects = () => {
       appLink: 'https://tuo-link-qui.com' // Da sostituire
     },
     {
-      title: 'E-Commerce Premium',
+      title: 'Routine Botanica',
       type: 'Web App & UX/UI',
-      img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
-      images: ['https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800'],
-      desc: 'Esperienza di shopping fluida con micro-interazioni e checkout ottimizzato.',
-      tech: ['Next.js', 'Framer Motion', 'Stripe'],
-      appLink: '#'
+      img: '/botanica-1.png',
+      images: ['/botanica-1.png', '/botanica-2.png', '/botanica-3.png', '/botanica-4.png'],
+      desc: 'App di habit tracking gamificata: il completamento delle routine quotidiane genera risorse per far crescere il tuo giardino virtuale.',
+      tech: ['UX/UI Design', 'Gamification', 'App Mobile'],
+      appLink: 'https://tuo-link-qui.com'
     }
   ];
 
