@@ -1,8 +1,26 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowDown } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, useMotionValue, useTransform } from 'framer-motion';
 
 const Hero = () => {
+  // Logica per l'effetto 3D
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useTransform(y, [-300, 300], [15, -15]);
+  const rotateY = useTransform(x, [-300, 300], [-15, 15]);
+
+  const handleMouseMove = (event) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const mouseX = event.clientX - rect.left - rect.width / 2;
+    const mouseY = event.clientY - rect.top - rect.height / 2;
+    x.set(mouseX);
+    y.set(mouseY);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
   return (
     <section id="home" className="min-h-screen flex flex-col justify-center items-center relative px-6">
       {/* Immagine in background (2026) simile all'immagine reference */}
@@ -14,16 +32,26 @@ const Hero = () => {
         />
       </div>
 
-      <div className="w-full max-w-7xl mx-auto text-center z-10">
+      <div 
+        className="w-full max-w-7xl mx-auto text-center z-10"
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{ perspective: 1200 }}
+      >
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
+          style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+          className="will-change-transform"
         >
-          <img 
+          <motion.img 
             src="/portfolio-title.png" 
             alt="Fake Copy Portfolio Graphic Design" 
             className="w-full max-w-[95%] md:max-w-[1600px] mx-auto drop-shadow-2xl"
+            style={{ transform: "translateZ(50px)" }}
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
           />
         </motion.div>
 
