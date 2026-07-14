@@ -23,7 +23,7 @@ const Hero = () => {
           <img 
             src="/portfolio-title.png" 
             alt="Fake Copy Portfolio Graphic Design" 
-            className="w-full max-w-[90%] md:max-w-5xl mx-auto drop-shadow-2xl"
+            className="w-full max-w-[95%] md:max-w-[1600px] mx-auto drop-shadow-2xl"
           />
         </motion.div>
 
