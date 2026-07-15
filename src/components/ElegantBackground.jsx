@@ -59,18 +59,6 @@ const ElegantBackground = () => {
         className="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] bg-brand-blue/20 rounded-full blur-[150px] mix-blend-screen pointer-events-none"
       />
 
-      {/* Griglia elegante sottilissima */}
-      <div 
-        className="absolute inset-0 opacity-[0.03]" 
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, #ffffff 1px, transparent 1px),
-            linear-gradient(to bottom, #ffffff 1px, transparent 1px)
-          `,
-          backgroundSize: '4rem 4rem'
-        }}
-      ></div>
-
       {/* Noise Texture leggerissima per un look premium "opaco" */}
       <div 
         className="absolute inset-0 opacity-[0.08] mix-blend-overlay"
