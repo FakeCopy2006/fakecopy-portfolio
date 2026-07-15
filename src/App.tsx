@@ -8,16 +8,15 @@ import BackgroundParticles from './components/BackgroundParticles';
 
 function App() {
   return (
-    <div className="bg-[#020617] bg-gradient-to-br from-[#020617] via-[#0B1120] to-[#0A0A16] min-h-screen font-sans text-text-main selection:bg-brand-blue/30 selection:text-white overflow-x-hidden relative">
-      {/* Texture Noise & Vignette Background */}
+    <div className="font-sans text-text-main selection:bg-brand-blue/30 selection:text-white overflow-x-hidden relative">
+      
+      {/* Livello 0: Sfondo Base e Gradiente Blu Profondo */}
+      <div className="fixed inset-0 z-[-2] bg-[#020617] bg-gradient-to-br from-[#020617] via-[#0B1120] to-[#0A0A16]"></div>
+
+      {/* Livello 1: Particelle e Texture Noise */}
       <div className="fixed inset-0 z-[-1] pointer-events-none">
-        {/* Particellare Dinamico */}
         <BackgroundParticles />
-        
-        {/* Vignette (centro più chiaro, bordi scuri) per profondità */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#020617_100%)] opacity-80"></div>
-        
-        {/* Rumore di fondo (effetto carta/tela cyber) */}
         <div 
           className="absolute inset-0 opacity-[0.10] mix-blend-overlay"
           style={{
@@ -27,13 +26,16 @@ function App() {
         ></div>
       </div>
 
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Projects />
-        <Contact />
-      </main>
+      {/* Livello 2: Contenuto del Sito */}
+      <div className="relative z-10">
+        <Navbar />
+        <main>
+          <Hero />
+          <About />
+          <Projects />
+          <Contact />
+        </main>
+      </div>
     </div>
   );
 }
