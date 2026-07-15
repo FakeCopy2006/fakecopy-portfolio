@@ -4,20 +4,22 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 const Hero = () => {
   const { scrollY } = useScroll();
   
-  // Quando scrollo da 0 a 600px:
-  // - L'opacità passa da 0.4 a 0
-  // - Il blur aumenta
-  // - L'immagine si "stretcha" verticalmente (scaleY da 1 a 3) e si allarga leggermente (scaleX da 1 a 1.2)
-  const opacity = useTransform(scrollY, [0, 600], [0.4, 0]);
-  const scaleY = useTransform(scrollY, [0, 600], [1, 3]);
-  const scaleX = useTransform(scrollY, [0, 600], [1, 1.2]);
-  const filter = useTransform(scrollY, [0, 600], ['blur(0px)', 'blur(20px)']);
+  // Animazioni allo scroll per lo Sfondo (2026)
+  const bgOpacity = useTransform(scrollY, [0, 600], [0.4, 0]);
+  const bgScaleY = useTransform(scrollY, [0, 600], [1, 3]);
+  const bgScaleX = useTransform(scrollY, [0, 600], [1, 1.2]);
+  const bgFilter = useTransform(scrollY, [0, 600], ['blur(0px)', 'blur(20px)']);
+
+  // Animazioni allo scroll per il Titolo (Portfolio)
+  const titleScale = useTransform(scrollY, [0, 600], [1, 3]); // Effetto Zoom massiccio in avanti
+  const titleOpacity = useTransform(scrollY, [0, 500], [1, 0]); // Svanisce mentre ingrandisce
+  const titleY = useTransform(scrollY, [0, 600], [0, 150]); // Scende leggermente verso il basso
 
   return (
     <section id="home" className="min-h-screen flex flex-col justify-center items-center relative px-6 overflow-hidden">
       {/* Immagine in background (2026) animata all'ingresso e allo scroll */}
       <motion.div 
-        style={{ opacity, scaleX, scaleY, filter }}
+        style={{ opacity: bgOpacity, scaleX: bgScaleX, scaleY: bgScaleY, filter: bgFilter }}
         className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 origin-center"
       >
         <motion.img 
@@ -30,12 +32,16 @@ const Hero = () => {
         />
       </motion.div>
 
-      {/* Testo principale (portfolio-title.png) animato in ingresso */}
-      <div className="w-full max-w-7xl mx-auto text-center z-10">
+      {/* Testo principale (portfolio-title.png) animato in ingresso e allo scroll */}
+      <motion.div 
+        style={{ scale: titleScale, opacity: titleOpacity, y: titleY }}
+        className="w-full max-w-7xl mx-auto text-center z-10 origin-center pointer-events-none"
+      >
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.4, type: "spring", stiffness: 60, damping: 20 }}
+          className="pointer-events-auto"
         >
           <motion.img 
             src="/portfolio-title.png" 
@@ -45,7 +51,7 @@ const Hero = () => {
             transition={{ type: "spring", stiffness: 400, damping: 25 }}
           />
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 };
