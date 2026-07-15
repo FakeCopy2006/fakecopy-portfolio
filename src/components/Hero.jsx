@@ -1,20 +1,32 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const Hero = () => {
+  const { scrollY } = useScroll();
+  
+  // Quando scrollo da 0 a 600px:
+  // - L'opacità passa da 0.4 a 0
+  // - Il blur aumenta
+  // - L'immagine si "stretcha" verticalmente (scaleY da 1 a 3) e si allarga leggermente (scaleX da 1 a 1.2)
+  const opacity = useTransform(scrollY, [0, 600], [0.4, 0]);
+  const scaleY = useTransform(scrollY, [0, 600], [1, 3]);
+  const scaleX = useTransform(scrollY, [0, 600], [1, 1.2]);
+  const filter = useTransform(scrollY, [0, 600], ['blur(0px)', 'blur(20px)']);
+
   return (
     <section id="home" className="min-h-screen flex flex-col justify-center items-center relative px-6 overflow-hidden">
-      {/* Immagine in background (2026) animata */}
+      {/* Immagine in background (2026) animata all'ingresso e allo scroll */}
       <motion.div 
-        initial={{ opacity: 0, scale: 1.2, filter: 'blur(10px)' }}
-        animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+        initial={{ scale: 1.2, filter: 'blur(10px)', opacity: 0 }}
+        animate={{ scale: 1, filter: 'blur(0px)', opacity: 0.4 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0"
+        style={{ opacity, scaleX, scaleY, filter }}
+        className="fixed inset-0 flex items-center justify-center pointer-events-none select-none -z-10 origin-bottom"
       >
         <img 
           src="/2026-bg.png" 
           alt="2026 Background" 
-          className="w-[150vw] sm:w-[120vw] md:w-[90vw] md:min-w-[1200px] max-w-none opacity-40 object-contain"
+          className="w-[150vw] sm:w-[120vw] md:w-[90vw] md:min-w-[1200px] max-w-none object-contain"
         />
       </motion.div>
 
