@@ -1,19 +1,25 @@
-import { useCallback } from "react";
-import Particles from "@tsparticles/react";
+import { useEffect, useState } from "react";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import type { Engine } from "@tsparticles/engine";
 
 const BackgroundParticles = () => {
-  const particlesInit = useCallback(async (engine: Engine) => {
-    // Carica la versione slim per performance ottimali
-    await loadSlim(engine);
+  const [init, setInit] = useState(false);
+
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      // Carica la versione slim
+      await loadSlim(engine);
+    }).then(() => {
+      setInit(true);
+    });
   }, []);
+
+  if (!init) return null;
 
   return (
     <Particles
       id="tsparticles"
-      init={particlesInit}
-      className="absolute inset-0 z-[-2] opacity-70"
+      className="absolute inset-0 z-0 opacity-70 pointer-events-auto"
       options={{
         background: {
           color: {
@@ -37,13 +43,13 @@ const BackgroundParticles = () => {
         },
         particles: {
           color: {
-            value: ["#3B82F6", "#8B5CF6", "#0ea5e9"], // Gradient of Blues & Purples
+            value: ["#3B82F6", "#8B5CF6", "#0ea5e9"],
           },
           links: {
             color: "#3B82F6",
             distance: 150,
             enable: true,
-            opacity: 0.3,
+            opacity: 0.4,
             width: 1,
           },
           move: {
@@ -53,7 +59,7 @@ const BackgroundParticles = () => {
               default: "bounce",
             },
             random: false,
-            speed: 1,
+            speed: 1.5,
             straight: false,
           },
           number: {
@@ -62,10 +68,10 @@ const BackgroundParticles = () => {
               width: 800,
               height: 800,
             },
-            value: 60,
+            value: 80,
           },
           opacity: {
-            value: 0.6,
+            value: 0.8,
           },
           shape: {
             type: "circle",
