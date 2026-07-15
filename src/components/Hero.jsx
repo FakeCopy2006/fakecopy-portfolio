@@ -8,7 +8,8 @@ const Hero = () => {
   const bgOpacity = useTransform(scrollY, [0, 600], [0.4, 0]);
   const bgScaleY = useTransform(scrollY, [0, 600], [1, 3]);
   const bgScaleX = useTransform(scrollY, [0, 600], [1, 1.2]);
-  const bgFilter = useTransform(scrollY, [0, 600], ['blur(0px)', 'blur(20px)']);
+  
+  // Rimosso il bgFilter per evitare lag estremi su GPU mobile (il blur animato è pesantissimo)
 
   // Animazioni allo scroll per il Titolo (Portfolio)
   const titleScale = useTransform(scrollY, [0, 600], [1, 3]); // Effetto Zoom massiccio in avanti
@@ -19,14 +20,14 @@ const Hero = () => {
     <section id="home" className="min-h-screen flex flex-col justify-center items-center relative px-6 overflow-hidden">
       {/* Immagine in background (2026) animata all'ingresso e allo scroll */}
       <motion.div 
-        style={{ opacity: bgOpacity, scaleX: bgScaleX, scaleY: bgScaleY, filter: bgFilter }}
+        style={{ opacity: bgOpacity, scaleX: bgScaleX, scaleY: bgScaleY, willChange: "transform, opacity" }}
         className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 origin-center"
       >
         <motion.img 
           src="/2026-bg.png" 
           alt="2026 Background" 
-          initial={{ scale: 1.2, filter: 'blur(10px)', opacity: 0 }}
-          animate={{ scale: 1, filter: 'blur(0px)', opacity: 1 }}
+          initial={{ scale: 1.2, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
           className="w-[150vw] sm:w-[120vw] md:w-[90vw] md:min-w-[1200px] max-w-none object-contain"
         />
@@ -34,7 +35,7 @@ const Hero = () => {
 
       {/* Testo principale (portfolio-title.png) animato in ingresso e allo scroll */}
       <motion.div 
-        style={{ scale: titleScale, opacity: titleOpacity, y: titleY }}
+        style={{ scale: titleScale, opacity: titleOpacity, y: titleY, willChange: "transform, opacity" }}
         className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-7xl mx-auto text-center z-10 origin-center pointer-events-none"
       >
         <motion.div
