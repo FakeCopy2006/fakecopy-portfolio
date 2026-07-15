@@ -167,21 +167,24 @@ html {
   }
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbar - Modern Transparent Effect */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 14px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #05050A; /* --color-bg-main */
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #8B5CF6, #3B82F6);
-  border-radius: 10px;
-  border: 3px solid #05050A;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 100px;
+  border: 4px solid transparent;
+  background-clip: content-box; /* Crea l'effetto "sospeso" con bordi trasparenti */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #EC4899, #8B5CF6);
+  background: rgba(255, 255, 255, 0.3);
+  border: 4px solid transparent;
+  background-clip: content-box;
 }
