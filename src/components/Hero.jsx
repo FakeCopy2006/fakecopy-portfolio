@@ -17,15 +17,15 @@ const Hero = () => {
     <section id="home" className="min-h-screen flex flex-col justify-center items-center relative px-6 overflow-hidden">
       {/* Immagine in background (2026) animata all'ingresso e allo scroll */}
       <motion.div 
-        initial={{ scale: 1.2, filter: 'blur(10px)', opacity: 0 }}
-        animate={{ scale: 1, filter: 'blur(0px)', opacity: 0.4 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
         style={{ opacity, scaleX, scaleY, filter }}
-        className="fixed inset-0 flex items-center justify-center pointer-events-none select-none -z-10 origin-bottom"
+        className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 origin-center"
       >
-        <img 
+        <motion.img 
           src="/2026-bg.png" 
           alt="2026 Background" 
+          initial={{ scale: 1.2, filter: 'blur(10px)', opacity: 0 }}
+          animate={{ scale: 1, filter: 'blur(0px)', opacity: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
           className="w-[150vw] sm:w-[120vw] md:w-[90vw] md:min-w-[1200px] max-w-none object-contain"
         />
       </motion.div>
