@@ -143,26 +143,24 @@ const About = () => {
         {nodes.map((node, idx) => (
           <motion.div
             key={node.id}
-            initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50, filter: 'blur(10px)' }}
-            whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1, type: "spring", stiffness: 100 }}
+            initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ delay: 0.1, type: "spring", stiffness: 80, damping: 20 }}
             className="w-full relative z-10"
           >
             {/* Punto luminoso di connessione sulla linea centrale */}
             <div className={`absolute top-1/2 -translate-y-1/2 ${idx % 2 === 0 ? '-right-[18px]' : '-left-[18px]'} w-4 h-4 rounded-full bg-white border-4 border-brand-purple shadow-[0_0_10px_rgba(255,255,255,1)] hidden`}></div>
             
-            <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10} scale={1.02} glareEnable={true} glareMaxOpacity={0.2} glareColor="#ffffff" glarePosition="all" className="w-full rounded-3xl">
-              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-2xl border border-white/20 border-t-white/40 border-l-white/40 p-6 rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-                <div className="flex items-center gap-4 mb-3">
-                  <div className="p-3 bg-gradient-to-br from-white/20 to-white/5 rounded-xl border border-white/20">
-                    {node.icon}
-                  </div>
-                  <h4 className="font-mono text-base tracking-widest uppercase text-white font-bold">{node.title}</h4>
+            <div className="w-full rounded-3xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 border-t-white/40 border-l-white/40 p-6 shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
+              <div className="flex items-center gap-4 mb-3">
+                <div className="p-3 bg-gradient-to-br from-white/20 to-white/5 rounded-xl border border-white/20">
+                  {node.icon}
                 </div>
-                <p className="text-gray-200 text-sm leading-relaxed">{node.desc}</p>
+                <h4 className="font-mono text-base tracking-widest uppercase text-white font-bold">{node.title}</h4>
               </div>
-            </Tilt>
+              <p className="text-gray-200 text-sm leading-relaxed">{node.desc}</p>
+            </div>
           </motion.div>
         ))}
       </div>
