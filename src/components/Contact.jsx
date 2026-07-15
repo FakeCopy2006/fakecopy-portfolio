@@ -17,10 +17,10 @@ const Contact = () => {
       
       <div className="max-w-4xl mx-auto text-center">
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 50, scale: 0.9, filter: 'blur(10px)' }}
+          whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
           className="glass-card p-12 md:p-16 relative overflow-hidden"
         >
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-purple via-brand-blue to-brand-magenta"></div>
@@ -34,14 +34,18 @@ const Contact = () => {
 
           <div className="flex flex-wrap justify-center gap-4">
             {socials.map((social, idx) => (
-              <a
+              <motion.a
                 key={idx}
+                initial={{ opacity: 0, scale: 0, y: 20 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 + idx * 0.1, type: "spring", bounce: 0.5 }}
                 href={social.href}
                 className="flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-brand-magenta/50 rounded-full transition-all duration-300 font-medium text-white hover:shadow-[0_0_20px_rgba(236,72,153,0.3)]"
               >
                 {social.icon}
                 <span>{social.label}</span>
-              </a>
+              </motion.a>
             ))}
           </div>
         </motion.div>

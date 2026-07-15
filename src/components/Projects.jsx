@@ -59,10 +59,10 @@ const Projects = () => {
     <section id="projects" className="py-24 px-6 relative z-10">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: -50, filter: 'blur(10px)' }}
+          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
           className="text-center mb-20"
         >
           <h2 className="text-5xl md:text-6xl font-display tracking-widest mb-6 uppercase text-white">
@@ -75,15 +75,23 @@ const Projects = () => {
 
         {/* Web App & UX/UI Section */}
         <div className="mb-24">
-          <h3 className="text-3xl font-semibold mb-10 border-b border-white/10 pb-4 inline-block">Web App & UX/UI</h3>
+          <motion.h3 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-3xl font-semibold mb-10 border-b border-white/10 pb-4 inline-block"
+          >
+            Web App & UX/UI
+          </motion.h3>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             {webProjects.map((project, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.2 }}
+                initial={{ opacity: 0, x: idx % 2 === 0 ? -100 : 100, filter: 'blur(20px)' }}
+                whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.8, delay: idx * 0.2, type: "spring", bounce: 0.3 }}
                 className="glass-card group overflow-hidden cursor-pointer"
                 onClick={() => openGallery(project)}
               >
@@ -125,15 +133,23 @@ const Projects = () => {
 
         {/* Graphic Works Section */}
         <div>
-          <h3 className="text-3xl font-semibold mb-10 border-b border-white/10 pb-4 inline-block">Lavori di Grafica</h3>
+          <motion.h3 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-3xl font-semibold mb-10 border-b border-white/10 pb-4 inline-block"
+          >
+            Lavori di Grafica
+          </motion.h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {graphicProjects.map((project, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: idx * 0.1 }}
+                initial={{ opacity: 0, scale: 0.5, y: 50, filter: 'blur(10px)' }}
+                whileInView={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: idx * 0.15, type: "spring", bounce: 0.5 }}
                 className="group relative rounded-2xl overflow-hidden aspect-[4/5] glass-card"
               >
                 <img 
