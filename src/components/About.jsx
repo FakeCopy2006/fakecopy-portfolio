@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
-import { Fingerprint, MonitorSmartphone, Palette, PenTool, Cpu, User, Zap, Mail, Github, Linkedin, ExternalLink } from 'lucide-react';
+import { Fingerprint, MonitorSmartphone, Palette, PenTool, Cpu, User, Zap, Mail, Code, Briefcase, ExternalLink } from 'lucide-react';
 
 const About = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -49,10 +49,10 @@ const About = () => {
         
         <div className="mt-8 flex gap-4 relative z-10">
           <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 hover:text-brand-purple transition-colors border border-white/5">
-            <Github className="w-5 h-5 text-gray-400" />
+            <Code className="w-5 h-5 text-gray-400" />
           </a>
           <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 hover:text-brand-blue transition-colors border border-white/5">
-            <Linkedin className="w-5 h-5 text-gray-400" />
+            <Briefcase className="w-5 h-5 text-gray-400" />
           </a>
           <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 hover:text-brand-magenta transition-colors border border-white/5">
             <Mail className="w-5 h-5 text-gray-400" />
