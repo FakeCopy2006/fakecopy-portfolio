@@ -35,7 +35,7 @@ const Hero = () => {
       {/* Testo principale (portfolio-title.png) animato in ingresso e allo scroll */}
       <motion.div 
         style={{ scale: titleScale, opacity: titleOpacity, y: titleY }}
-        className="w-full max-w-7xl mx-auto text-center z-10 origin-center pointer-events-none"
+        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-7xl mx-auto text-center z-10 origin-center pointer-events-none"
       >
         <motion.div
           initial={{ opacity: 0, y: 100 }}
