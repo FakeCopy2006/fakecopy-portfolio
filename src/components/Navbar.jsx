@@ -35,7 +35,7 @@ const Navbar = () => {
       <nav 
         className={`w-full transition-all duration-500 grid grid-cols-3 items-center ${
           scrolled 
-            ? 'max-w-4xl bg-black/40 backdrop-blur-2xl border border-white/20 rounded-full px-6 md:px-8 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.5)]' 
+            ? 'max-w-4xl bg-white/10 backdrop-blur-lg border border-white/20 rounded-full px-6 md:px-8 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.5)]' 
             : 'max-w-7xl bg-transparent px-6 py-4 md:py-6 border border-transparent rounded-none'
         }`}
       >
