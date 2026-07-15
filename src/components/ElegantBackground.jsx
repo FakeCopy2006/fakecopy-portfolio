@@ -17,7 +17,7 @@ const ElegantBackground = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none bg-[#030712]">
+    <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none bg-[#121212]">
       
       {/* Orb interattiva che segue il mouse in modo fluido */}
       <motion.div
@@ -81,7 +81,7 @@ const ElegantBackground = () => {
       ></div>
 
       {/* Vignetta scura per dare profondità e concentrare l'attenzione al centro */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_10%,_#030712_100%)] opacity-80"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_10%,_#121212_100%)] opacity-80"></div>
     </div>
   );
 };
