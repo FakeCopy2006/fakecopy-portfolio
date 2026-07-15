@@ -22,7 +22,7 @@ const About = () => {
         </motion.div>
 
         {/* Effetto Bagliore Dietro la Card */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-full blur-[100px] bg-gradient-to-tr from-brand-purple/20 to-brand-blue/20 -z-10 rounded-full"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-full blur-[100px] bg-gradient-to-tr from-brand-purple/20 to-brand-blue/20 -z-10 rounded-full"></div>
 
         {/* ID CARD */}
         <motion.div
@@ -30,7 +30,7 @@ const About = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="max-w-4xl mx-auto bg-[#050505]/60 backdrop-blur-2xl border border-white/10 rounded-[2rem] p-8 md:p-12 relative overflow-hidden flex flex-col md:flex-row gap-10 shadow-[0_0_40px_rgba(110,60,255,0.15)] group/card"
+          className="max-w-5xl mx-auto bg-[#050505]/60 backdrop-blur-2xl border border-white/10 rounded-[2rem] p-8 md:p-12 relative overflow-hidden flex flex-col md:flex-row gap-10 shadow-[0_0_40px_rgba(110,60,255,0.15)] group/card"
         >
           {/* Card Decals & Glowing Effects */}
           <div className="absolute -top-32 -right-32 w-64 h-64 bg-brand-purple/20 blur-[80px] rounded-full pointer-events-none"></div>
