@@ -96,7 +96,8 @@ const Projects = () => {
                 onClick={() => openGallery(project)}
               >
                 <div className="relative h-64 overflow-hidden">
-                  <div className="absolute inset-0 bg-brand-purple/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500"></div>
+                  {/* Overlay Hover */}
+                  <div className="absolute inset-0 bg-brand-purple/10 z-10 group-hover:opacity-0 transition-opacity duration-500 pointer-events-none"></div>
                   <img 
                     src={project.img} 
                     alt={project.title} 
