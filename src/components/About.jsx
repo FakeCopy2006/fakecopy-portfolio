@@ -44,7 +44,7 @@ const About = () => {
         ></motion.div>
         
         <div className="w-40 h-40 lg:w-48 lg:h-48 relative z-10 flex items-center justify-center p-2 rounded-full border border-white/10 bg-black/40 overflow-hidden shadow-[0_0_20px_rgba(255,255,255,0.05)]">
-          <img src="/foto-profilo.jpg" alt="Mattia Gigliotti" className="w-full h-full object-cover rounded-full" />
+          <img src="/foto-profilo.png" alt="Mattia Gigliotti" className="w-full h-full object-cover rounded-full" />
         </div>
         
         <div className="mt-8 flex gap-4 relative z-10">
