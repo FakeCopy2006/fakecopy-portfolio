@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Tilt from 'react-parallax-tilt';
-import { Fingerprint, MonitorSmartphone, Palette, PenTool, Cpu, User, Zap, Mail, Code, Briefcase, ExternalLink } from 'lucide-react';
+import { Fingerprint, MonitorSmartphone, Palette, PenTool, Cpu, User, Zap, Mail, Code, Briefcase, ExternalLink, MapPin, CalendarDays } from 'lucide-react';
 
 const About = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -43,8 +43,8 @@ const About = () => {
           className="absolute w-48 h-48 rounded-full border border-brand-purple/20 bg-brand-purple/5 blur-md"
         ></motion.div>
         
-        <div className="w-40 h-40 lg:w-48 lg:h-48 relative z-10 flex items-center justify-center p-4">
-          <img src="/logo.png" alt="Fake Copy Logo" className="w-full h-full object-contain filter drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]" />
+        <div className="w-40 h-40 lg:w-48 lg:h-48 relative z-10 flex items-center justify-center p-2 rounded-full border border-white/10 bg-black/40 overflow-hidden shadow-[0_0_20px_rgba(255,255,255,0.05)]">
+          <img src="/foto-profilo.jpg" alt="Mattia Gigliotti" className="w-full h-full object-cover rounded-full" />
         </div>
         
         <div className="mt-8 flex gap-4 relative z-10">
@@ -72,14 +72,23 @@ const About = () => {
           <span className="text-brand-magenta font-mono text-xs tracking-widest uppercase">Profilo Sistema</span>
         </div>
         
-        <h3 className="text-3xl lg:text-4xl font-display font-bold text-white mb-6 uppercase tracking-wider">
-          Fake Copy
+        <h3 className="text-3xl lg:text-4xl font-display font-bold text-white mb-2 uppercase tracking-wider">
+          Mattia Gigliotti
         </h3>
+
+        <div className="flex flex-col gap-2 mb-6">
+          <div className="flex items-center gap-2 text-gray-400 text-sm font-mono">
+            <CalendarDays className="w-4 h-4 text-brand-purple" />
+            <span>11/09/2006</span>
+          </div>
+          <div className="flex items-center gap-2 text-gray-400 text-sm font-mono">
+            <MapPin className="w-4 h-4 text-brand-blue" />
+            <span>Lamezia Terme - Calabria (CZ)</span>
+          </div>
+        </div>
         
-        <p className="text-gray-400 text-sm lg:text-base leading-relaxed mb-8 max-w-lg">
-          Sono uno sviluppatore e designer specializzato nella creazione di esperienze digitali ad alto impatto visivo.
-          Unisco competenze grafiche avanzate a uno sviluppo web moderno per plasmare interfacce pulite, veloci e memorabili.
-          Dalla progettazione UI/UX fino all'architettura di sistemi complessi.
+        <p className="text-gray-300 text-sm lg:text-base leading-relaxed mb-8 max-w-lg">
+          Ragazzo serio, motivato e affidabile, con una solida esperienza lavorativa trasversale che spazia dalla gestione commerciale e operativa alla grafica e manutenzione tecnica. Ottime capacità comunicative e relazionali, sia con i clienti che con i colleghi, garantendo un flusso di lavoro efficiente. Dotato di forte spirito di adattamento, precisione e capacità di lavorare sotto pressione con scadenze stringenti.
         </p>
         
         <div>
@@ -113,7 +122,7 @@ const About = () => {
       >
         <p className="text-brand-purple font-mono text-sm tracking-[0.3em] mb-4 uppercase">System Data</p>
         <h2 className="text-5xl md:text-6xl font-display tracking-widest uppercase text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
-          IL MIO <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-purple via-brand-blue to-brand-magenta">NUCLEO</span>
+          CHI <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-purple via-brand-blue to-brand-magenta">SONO?</span>
         </h2>
       </motion.div>
 
