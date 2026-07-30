@@ -43,8 +43,8 @@ const About = () => {
           className="absolute w-48 h-48 rounded-full border border-brand-purple/20 bg-brand-purple/5 blur-md"
         ></motion.div>
         
-        <div className="w-40 h-40 lg:w-48 lg:h-48 relative z-10 flex items-center justify-center p-2 rounded-full border border-white/10 bg-black/40 overflow-hidden shadow-[0_0_20px_rgba(255,255,255,0.05)]">
-          <img src="/foto-profilo.png" alt="Mattia Gigliotti" className="w-full h-full object-cover rounded-full" />
+        <div className="w-40 h-40 lg:w-48 lg:h-48 relative z-10 rounded-full border-2 border-white/10 overflow-hidden shadow-[0_0_30px_rgba(139,92,246,0.2)] ring-4 ring-black/50 group cursor-default">
+          <img src="/foto-profilo.png" alt="Mattia Gigliotti" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
         </div>
         
         <div className="mt-8 flex gap-4 relative z-10">
