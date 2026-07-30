@@ -21,7 +21,7 @@ const ElegantBackground = () => {
       
       {/* Orb interattiva che segue il mouse in modo fluido */}
       <motion.div
-        className="absolute w-[600px] h-[600px] rounded-full opacity-[0.15] blur-[100px] pointer-events-none"
+        className="absolute w-[600px] h-[600px] rounded-full opacity-[0.15] pointer-events-none"
         style={{
           background: 'radial-gradient(circle, rgba(139,92,246,0.8) 0%, rgba(59,130,246,0) 70%)',
         }}
@@ -45,7 +45,7 @@ const ElegantBackground = () => {
           rotate: [0, 90, 0]
         }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        className="absolute top-[-20%] left-[-10%] w-[70vw] h-[70vw] bg-brand-purple/20 rounded-full blur-[100px] pointer-events-none"
+        className="absolute top-[-20%] left-[-10%] w-[70vw] h-[70vw] rounded-full pointer-events-none bg-[radial-gradient(circle,rgba(139,92,246,0.25)_0%,rgba(0,0,0,0)_70%)]"
       />
 
       {/* Sfondo animato fluido secondario */}
@@ -56,7 +56,7 @@ const ElegantBackground = () => {
           rotate: [0, -90, 0]
         }}
         transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        className="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] bg-brand-blue/20 rounded-full blur-[100px] pointer-events-none"
+        className="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] rounded-full pointer-events-none bg-[radial-gradient(circle,rgba(59,130,246,0.25)_0%,rgba(0,0,0,0)_70%)]"
       />
 
       {/* Noise Texture leggerissima per un look premium "opaco" */}

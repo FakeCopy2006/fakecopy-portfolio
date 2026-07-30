@@ -13,7 +13,7 @@ const Contact = () => {
   return (
     <section id="contact" className="py-24 px-6 relative z-10">
       {/* Decorative gradient orb */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-brand-magenta/10 blur-[120px] rounded-full -z-10 pointer-events-none"></div>
+      <div className="hidden md:block absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-brand-magenta/10 blur-[120px] rounded-full -z-10 pointer-events-none"></div>
       
       <div className="max-w-4xl mx-auto text-center">
         <motion.div

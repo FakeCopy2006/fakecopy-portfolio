@@ -24,11 +24,11 @@ const About = () => {
   ];
 
   const CardContent = () => (
-    <div className="relative w-full h-full flex flex-col lg:flex-row overflow-hidden rounded-3xl bg-[#18181b]/60 backdrop-blur-3xl border border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+    <div className="relative w-full h-full flex flex-col lg:flex-row overflow-hidden rounded-3xl bg-[#18181b]/95 md:bg-[#18181b]/60 md:backdrop-blur-3xl border border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
       
-      {/* Glow interni alla card per dare un po' di luce */}
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-brand-purple/10 rounded-full blur-[100px] pointer-events-none -z-10"></div>
-      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-brand-blue/10 rounded-full blur-[80px] pointer-events-none -z-10"></div>
+      {/* Glow interni alla card per dare un po' di luce - Nascosti su mobile per performance */}
+      <div className="hidden md:block absolute top-0 right-0 w-[400px] h-[400px] bg-brand-purple/10 rounded-full blur-[100px] pointer-events-none -z-10"></div>
+      <div className="hidden md:block absolute bottom-0 left-0 w-[300px] h-[300px] bg-brand-blue/10 rounded-full blur-[80px] pointer-events-none -z-10"></div>
       
       {/* Bordo superiore accentato */}
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-brand-purple/50 to-transparent"></div>
@@ -127,8 +127,8 @@ const About = () => {
       </motion.div>
 
       <div className="max-w-5xl mx-auto relative">
-        {/* Glow di sfondo generico dietro la card */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-brand-purple/20 blur-[120px] rounded-full pointer-events-none -z-20"></div>
+        {/* Glow di sfondo generico dietro la card - Nascosto su mobile */}
+        <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-brand-purple/20 blur-[120px] rounded-full pointer-events-none -z-20"></div>
         
         <motion.div
           initial={{ opacity: 0, y: 40 }}
