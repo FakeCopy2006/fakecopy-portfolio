@@ -1,37 +1,66 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Code, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ExternalLink, X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const webProjects = [
+  const projects = [
     {
+      id: 1,
       title: 'Manuel Barber Shop',
-      type: 'Web App & UX/UI',
+      category: 'Web App & UX/UI',
       img: '/manuel-1.png',
       images: ['/manuel-1.png', '/manuel-2.png', '/manuel-3.png', '/manuel-4.png'],
-      desc: 'Applicazione completa per la prenotazione online di appuntamenti dal barbiere, con interfaccia premium e intuitiva.',
-      tech: ['React', 'Tailwind', 'UX/UI Design'],
-      appLink: 'https://tuo-link-qui.com' // Da sostituire
+      desc: 'Applicazione completa per la prenotazione online, interfaccia premium.',
+      tech: ['React', 'UX/UI Design'],
+      appLink: 'https://tuo-link-qui.com',
+      isLarge: true
     },
     {
+      id: 2,
       title: 'Routine Botanica',
-      type: 'Web App & UX/UI',
+      category: 'Web App & UX/UI',
       img: '/botanica-1.png',
       images: ['/botanica-1.png', '/botanica-2.png', '/botanica-3.png', '/botanica-4.png'],
-      desc: 'App di habit tracking gamificata: il completamento delle routine quotidiane genera risorse per far crescere il tuo giardino virtuale.',
-      tech: ['UX/UI Design', 'Gamification', 'App Mobile'],
-      appLink: 'https://tuo-link-qui.com'
+      desc: 'App di habit tracking gamificata con giardino virtuale.',
+      tech: ['Gamification', 'Mobile'],
+      appLink: 'https://tuo-link-qui.com',
+      isLarge: true
+    },
+    {
+      id: 3,
+      title: 'Brand Identity',
+      category: 'Graphic Design',
+      img: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=600',
+      images: ['https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=1200'],
+      isLarge: false
+    },
+    {
+      id: 4,
+      title: 'Social Media',
+      category: 'Graphic Design',
+      img: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=600',
+      images: ['https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=1200'],
+      isLarge: false
+    },
+    {
+      id: 5,
+      title: 'Poster Design',
+      category: 'Graphic Design',
+      img: 'https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=600',
+      images: ['https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=1200'],
+      isLarge: false
+    },
+    {
+      id: 6,
+      title: 'Packaging',
+      category: 'Graphic Design',
+      img: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&q=80&w=600',
+      images: ['https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&q=80&w=1200'],
+      isLarge: false
     }
-  ];
-
-  const graphicProjects = [
-    { title: 'Brand Identity', img: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=600' },
-    { title: 'Social Media Kit', img: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=600' },
-    { title: 'Poster Design', img: 'https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=600' },
-    { title: 'Packaging Concept', img: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&q=80&w=600' },
   ];
 
   const openGallery = (project) => {
@@ -56,188 +85,159 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-24 px-6 relative z-10">
-      <div className="max-w-6xl mx-auto">
+    <section id="projects" className="py-32 px-4 md:px-6 relative z-10">
+      <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: -50, filter: 'blur(10px)' }}
-          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
-          className="text-center mb-20"
+          transition={{ duration: 0.8, type: "spring" }}
+          className="mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-display tracking-widest mb-6 uppercase text-white">
-            I MIEI <span className="text-gray-400">PROGETTI</span>
+          <h2 className="text-sm font-mono text-brand-purple tracking-[0.3em] uppercase mb-4">
+            Lavori Selezionati
           </h2>
-          <p className="text-text-muted text-lg max-w-2xl mx-auto">
-            Una selezione dei miei lavori migliori, divisi tra sviluppo web e creatività grafica.
-          </p>
+          <h3 className="text-5xl md:text-7xl font-display font-bold uppercase tracking-widest text-white leading-[1.1]">
+            I MIEI <br className="hidden md:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-magenta">PROGETTI.</span>
+          </h3>
         </motion.div>
 
-        {/* Web App & UX/UI Section */}
-        <div className="mb-24">
-          <motion.h3 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-3xl font-semibold mb-10 border-b border-white/10 pb-4 inline-block"
-          >
-            Web App & UX/UI
-          </motion.h3>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            {webProjects.map((project, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, x: idx % 2 === 0 ? -100 : 100, filter: 'blur(20px)' }}
-                whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.8, delay: idx * 0.2, type: "spring", bounce: 0.3 }}
-                className="glass-card group overflow-hidden cursor-pointer"
-                onClick={() => openGallery(project)}
-              >
-                <div className="relative h-64 overflow-hidden">
-                  {/* Overlay Hover */}
-                  <div className="absolute inset-0 bg-brand-purple/10 z-10 group-hover:opacity-0 transition-opacity duration-500 pointer-events-none"></div>
-                  <img 
-                    src={project.img} 
-                    alt={project.title} 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 object-top"
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 bg-black/40 backdrop-blur-sm">
-                    <span className="text-white font-medium uppercase tracking-wider border border-white/50 px-6 py-2 rounded-full">Vedi Gallery</span>
+        {/* BENTO BOX GRID */}
+        <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-3 gap-4 md:gap-6 auto-rows-[250px] md:auto-rows-[minmax(200px,1fr)]">
+          {projects.map((project, idx) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: idx * 0.1, type: "spring", bounce: 0.3 }}
+              className={`group relative rounded-3xl overflow-hidden bg-[#18181b]/80 border border-white/5 hover:border-white/20 transition-all duration-500 cursor-pointer shadow-lg
+                ${project.isLarge ? 'md:col-span-2 md:row-span-2' : 'md:col-span-1 md:row-span-1'}
+              `}
+              onClick={() => openGallery(project)}
+            >
+              {/* Immagine di sfondo */}
+              <div className="absolute inset-0 overflow-hidden">
+                <img 
+                  src={project.img} 
+                  alt={project.title} 
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 object-top"
+                />
+              </div>
+
+              {/* Overlay Glassmorphism per leggibilità */}
+              <div className={`absolute inset-0 flex flex-col justify-end p-6 md:p-8 bg-gradient-to-t transition-opacity duration-300
+                ${project.isLarge ? 'from-black/90 via-black/40 to-transparent' : 'from-black/90 to-transparent opacity-80 group-hover:opacity-100'}
+              `}>
+                <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-xs font-mono tracking-widest text-brand-magenta uppercase bg-black/50 px-2 py-1 rounded border border-white/10 backdrop-blur-sm">
+                      {project.category}
+                    </span>
                   </div>
-                </div>
-                <div className="p-8">
-                  <div className="text-gray-400 text-sm font-semibold tracking-wider uppercase mb-2">{project.type}</div>
-                  <h4 className="text-2xl font-bold mb-3 text-white">{project.title}</h4>
-                  <p className="text-text-muted mb-6">{project.desc}</p>
+                  <h4 className={`${project.isLarge ? 'text-3xl md:text-4xl' : 'text-xl'} font-display font-bold text-white mb-2`}>
+                    {project.title}
+                  </h4>
                   
-                  <div className="flex items-center justify-between mt-auto">
-                    <div className="flex flex-wrap gap-2">
+                  {project.isLarge && (
+                    <p className="text-gray-300 text-sm md:text-base mb-4 line-clamp-2 max-w-sm">
+                      {project.desc}
+                    </p>
+                  )}
+                  
+                  {project.isLarge && (
+                    <div className="flex flex-wrap gap-2 mb-4">
                       {project.tech.map((t, i) => (
-                        <span key={i} className="text-xs py-1 px-3 bg-white/5 border border-white/10 rounded-full text-text-muted">
+                        <span key={i} className="text-[10px] uppercase font-mono tracking-wider py-1 px-2 bg-white/10 rounded-full text-gray-300 backdrop-blur-md">
                           {t}
                         </span>
                       ))}
                     </div>
-                    <div className="flex gap-3">
-                      <a href={project.appLink} target="_blank" rel="noopener noreferrer" className="p-2 bg-white/5 rounded-full hover:bg-white/10 hover:text-brand-purple transition-colors border border-white/10" onClick={(e) => e.stopPropagation()}>
-                        <ExternalLink className="w-5 h-5" />
-                      </a>
-                    </div>
-                  </div>
+                  )}
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+              </div>
 
-        {/* Graphic Works Section */}
-        <div>
-          <motion.h3 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-3xl font-semibold mb-10 border-b border-white/10 pb-4 inline-block"
-          >
-            Lavori di Grafica
-          </motion.h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {graphicProjects.map((project, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.5, y: 50, filter: 'blur(10px)' }}
-                whileInView={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: idx * 0.15, type: "spring", bounce: 0.5 }}
-                className="group relative rounded-2xl overflow-hidden aspect-[4/5] glass-card"
-              >
-                <img 
-                  src={project.img} 
-                  alt={project.title} 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                  <h4 className="text-xl font-semibold translate-y-4 group-hover:translate-y-0 transition-transform duration-300 text-white">
-                    {project.title}
-                  </h4>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+              {/* Tasto Hover per la gallery (UI/UX Pro Max touch) */}
+              <div className="absolute top-4 right-4 md:top-6 md:right-6 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 transition-all duration-300 shadow-xl">
+                <Maximize2 className="w-5 h-5 text-white" />
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
 
-      {/* Modal Gallery */}
+      {/* Modal Gallery Ottimizzata */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl p-0 md:p-8"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#09090b]/95 p-0 md:p-8"
             onClick={closeGallery}
           >
-            {/* Pulsante di chiusura sempre visibile in alto a destra su mobile */}
             <button 
               onClick={closeGallery}
-              className="absolute top-4 right-4 md:-top-12 md:right-0 z-50 text-white hover:text-gray-300 transition-colors bg-white/20 backdrop-blur-md p-3 rounded-full shadow-lg"
+              className="absolute top-4 right-4 md:top-8 md:right-8 z-50 text-gray-400 hover:text-white transition-colors bg-white/5 border border-white/10 hover:bg-white/10 p-3 rounded-full"
             >
               <X className="w-6 h-6" />
             </button>
 
             <div 
-              className="relative w-full h-full md:h-auto max-w-5xl max-h-screen md:max-h-[90vh] flex flex-col items-center justify-center p-4"
+              className="relative w-full h-full md:h-auto max-w-6xl max-h-screen flex flex-col items-center justify-center p-4"
               onClick={(e) => e.stopPropagation()}
             >
               
               {selectedProject.images.length > 1 && (
                 <>
-                  <button onClick={prevImage} className="absolute left-2 md:left-0 top-1/2 -translate-y-1/2 md:-translate-x-12 p-3 md:p-4 bg-black/60 text-white rounded-full hover:bg-white/20 transition backdrop-blur-md z-40">
-                    <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" />
+                  <button onClick={prevImage} className="absolute left-2 md:-left-16 top-1/2 -translate-y-1/2 p-4 text-white/50 hover:text-white transition-colors z-40">
+                    <ChevronLeft className="w-10 h-10" />
                   </button>
-                  <button onClick={nextImage} className="absolute right-2 md:right-0 top-1/2 -translate-y-1/2 md:translate-x-12 p-3 md:p-4 bg-black/60 text-white rounded-full hover:bg-white/20 transition backdrop-blur-md z-40">
-                    <ChevronRight className="w-6 h-6 md:w-8 md:h-8" />
+                  <button onClick={nextImage} className="absolute right-2 md:-right-16 top-1/2 -translate-y-1/2 p-4 text-white/50 hover:text-white transition-colors z-40">
+                    <ChevronRight className="w-10 h-10" />
                   </button>
                 </>
               )}
 
-              <div className="w-full flex-1 flex items-center justify-center max-h-[70vh] md:max-h-[75vh]">
+              <div className="w-full flex-1 flex flex-col items-center justify-center max-h-[75vh]">
                 <img 
                   src={selectedProject.images[currentImageIndex]} 
                   alt={`${selectedProject.title} preview ${currentImageIndex + 1}`} 
-                  className="max-w-full max-h-full object-contain rounded-xl shadow-2xl"
+                  className="max-w-full max-h-full object-contain rounded-xl shadow-2xl ring-1 ring-white/10"
                 />
               </div>
 
-              <div className="mt-8 flex flex-col md:flex-row items-center justify-between w-full gap-6">
-                <div className="flex gap-3">
-                  {selectedProject.images.map((_, i) => (
-                    <div 
-                      key={i} 
-                      className={`w-3 h-3 rounded-full transition-all ${i === currentImageIndex ? 'bg-white scale-125 shadow-[0_0_10px_rgba(255,255,255,0.8)]' : 'bg-white/30 cursor-pointer hover:bg-white/50'}`}
-                      onClick={() => setCurrentImageIndex(i)}
-                    ></div>
-                  ))}
+              <div className="mt-8 flex flex-col md:flex-row items-center justify-between w-full max-w-3xl gap-6 bg-white/5 border border-white/10 p-4 md:p-6 rounded-3xl">
+                <div className="flex-1">
+                  <h4 className="text-2xl font-display text-white mb-1">{selectedProject.title}</h4>
+                  <p className="text-gray-400 text-sm font-mono uppercase tracking-widest">{selectedProject.category}</p>
                 </div>
+
+                {selectedProject.images.length > 1 && (
+                  <div className="flex gap-2">
+                    {selectedProject.images.map((_, i) => (
+                      <div 
+                        key={i} 
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${i === currentImageIndex ? 'bg-brand-purple w-6' : 'bg-white/20 cursor-pointer hover:bg-white/40'}`}
+                        onClick={() => setCurrentImageIndex(i)}
+                      ></div>
+                    ))}
+                  </div>
+                )}
                 
-                <div className="flex flex-col sm:flex-row w-full md:w-auto gap-4">
-                  <button 
-                    onClick={closeGallery}
-                    className="w-full sm:w-auto px-8 py-3 bg-transparent border border-white/30 text-white font-semibold rounded-full hover:bg-white/10 transition-colors flex items-center justify-center gap-2"
-                  >
-                    Torna Indietro
-                  </button>
-                  <a 
-                    href={selectedProject.appLink} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="w-full sm:w-auto px-8 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-colors flex items-center justify-center gap-2 shadow-lg"
-                  >
-                    <ExternalLink className="w-5 h-5" /> Vedi Applicazione
-                  </a>
-                </div>
+                {selectedProject.appLink && (
+                  <div className="flex-1 flex justify-end">
+                    <a 
+                      href={selectedProject.appLink} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="px-6 py-3 bg-white text-black text-sm font-semibold rounded-full hover:scale-105 transition-transform flex items-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.3)]"
+                    >
+                      <ExternalLink className="w-4 h-4" /> Live
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
           </motion.div>
