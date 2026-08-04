@@ -104,7 +104,7 @@ const Projects = () => {
         </motion.div>
 
         {/* BENTO BOX GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-3 gap-4 md:gap-6 auto-rows-[250px] md:auto-rows-[minmax(200px,1fr)]">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 auto-rows-[300px] md:auto-rows-[280px]">
           {projects.map((project, idx) => (
             <motion.div
               key={project.id}
