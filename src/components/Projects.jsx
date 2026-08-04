@@ -136,7 +136,7 @@ const Projects = () => {
                       {project.category}
                     </span>
                   </div>
-                  <h4 className={`${project.isLarge ? 'text-3xl md:text-4xl' : 'text-xl'} font-display font-bold text-white mb-2`}>
+                  <h4 className={`${project.isLarge ? 'text-3xl md:text-4xl' : 'text-xl'} font-display font-bold tracking-wider text-white mb-2`}>
                     {project.title}
                   </h4>
                   
@@ -210,7 +210,7 @@ const Projects = () => {
 
               <div className="mt-8 flex flex-col md:flex-row items-center justify-between w-full max-w-3xl gap-6 bg-white/5 border border-white/10 p-4 md:p-6 rounded-3xl">
                 <div className="flex-1">
-                  <h4 className="text-2xl font-display text-white mb-1">{selectedProject.title}</h4>
+                  <h4 className="text-2xl font-display tracking-wider text-white mb-1">{selectedProject.title}</h4>
                   <p className="text-gray-400 text-sm font-mono uppercase tracking-widest">{selectedProject.category}</p>
                 </div>
 
